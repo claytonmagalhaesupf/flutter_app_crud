@@ -1,4 +1,4 @@
-# meuapp
+# App Flutter CRUD
 
 Projeto da disciplina Mobile 3.
 
