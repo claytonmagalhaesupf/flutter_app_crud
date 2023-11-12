@@ -41,8 +41,8 @@ class _HomePageState extends State<HomePage> {
                     elevation: 5,
                     child: Slidable(
                       endActionPane:
-                          ActionPane(motion: ScrollMotion(), children: [
-                        SlidableAction(
+                          ActionPane(motion: const ScrollMotion(), children: [
+                        const SlidableAction(
                           onPressed: null,
                           backgroundColor: Colors.grey,
                           foregroundColor: Colors.black,
@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                                 actions: [
                                   TextButton(
                                       onPressed: () => Navigator.pop(context),
-                                      child: Text("Cancelar")),
+                                      child: const Text("Cancelar")),
                                   TextButton(
                                       onPressed: () async {
                                         await controller.deleteCourse(
@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                                         Navigator.pop(context);
                                         //
                                       },
-                                      child: Text("OK"))
+                                      child: const Text("OK"))
                                 ],
                               ),
                             ).then((value) async {
