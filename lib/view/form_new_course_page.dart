@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meuapp/controller/course_controller.dart';
+import 'package:meuapp/model/course_model.dart';
 
 class FormNewCoursePage extends StatefulWidget {
   const FormNewCoursePage({super.key});
@@ -15,6 +16,26 @@ class _FormNewCoursePageState extends State<FormNewCoursePage> {
   TextEditingController textNameController = TextEditingController();
   TextEditingController textDescriptionController = TextEditingController();
   TextEditingController textStartAtController = TextEditingController();
+
+  postNewCourse() async {
+    try {
+      await controller.postNewCourse(
+        CourseEntity(
+          name: textNameController.text,
+          description: textDescriptionController.text,
+          start_at: textStartAtController.text,
+        ),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Dados salvos!')),
+      );
+      Navigator.pop(context);
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('$e')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +88,28 @@ class _FormNewCoursePageState extends State<FormNewCoursePage> {
                 height: 15,
               ),
               TextFormField(
+                onTap: () {
+                  //showDatePicker class
+                  showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime.now(),
+                    lastDate: DateTime(2030),
+                  ).then(
+                    (value) {
+                      //import 'package:intl/intl.dart';
+                      //Date Format
+                      if (value != null) {
+                        setState(
+                          () {
+                            textStartAtController.text = value
+                                .toString(); //set output date to TextField value.
+                          },
+                        );
+                      }
+                    },
+                  );
+                },
                 controller: textStartAtController,
                 decoration: const InputDecoration(
                   contentPadding: EdgeInsets.only(left: 17),
@@ -92,6 +135,7 @@ class _FormNewCoursePageState extends State<FormNewCoursePage> {
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       //aqui enviar para api os dados
+                      postNewCourse();
                     }
                   },
                   child: const Text(

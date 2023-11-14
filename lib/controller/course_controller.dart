@@ -22,4 +22,12 @@ class CourseController {
       rethrow;
     }
   }
+
+  postNewCourse(CourseEntity courseEntity) async {
+    try {
+      await repository.postNewCourse(courseEntity);
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

@@ -3,6 +3,7 @@ import 'package:meuapp/controller/course_controller.dart';
 import 'package:meuapp/model/course_model.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:meuapp/view/drawer.dart';
+import 'package:meuapp/view/form_new_course_page.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -105,6 +106,18 @@ class _HomePageState extends State<HomePage> {
             );
           }
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const FormNewCoursePage(),
+          ),
+        ).then((value) {
+          coursesFuture = getCourses();
+          setState(() => {});
+        }),
       ),
     );
   }
