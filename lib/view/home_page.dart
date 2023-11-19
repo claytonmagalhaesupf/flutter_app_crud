@@ -45,8 +45,19 @@ class _HomePageState extends State<HomePage> {
                   child: Slidable(
                     endActionPane:
                         ActionPane(motion: const ScrollMotion(), children: [
-                      const SlidableAction(
-                        onPressed: null,
+                      SlidableAction(
+                        onPressed: (context) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FormNewCoursePage(
+                                  courseEdit: snapshot.data![index]),
+                            ),
+                          ).then((value) {
+                            coursesFuture = getCourses();
+                            setState(() => {});
+                          });
+                        },
                         backgroundColor: Colors.grey,
                         foregroundColor: Colors.black,
                         icon: Icons.edit,
@@ -112,7 +123,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () => Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const FormNewCoursePage(),
+            builder: (context) => FormNewCoursePage(),
           ),
         ).then((value) {
           coursesFuture = getCourses();
