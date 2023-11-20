@@ -35,7 +35,7 @@ class _FormNewCoursePageState extends State<FormNewCoursePage> {
 
   putUpdateCourse() async {
     try {
-      await controller.postNewCourse(
+      await controller.putUpdateCourse(
         CourseEntity(
           id: id,
           name: textNameController.text,
