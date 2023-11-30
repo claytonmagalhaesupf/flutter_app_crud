@@ -3,6 +3,7 @@ import 'package:meuapp/core/themes.dart';
 import 'package:meuapp/view/login_page.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:meuapp/view/welcome_page.dart';
 
 void main() {
   initializeDateFormatting('pt_BR', null);
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: ThemeClass.lightTheme,
       darkTheme: ThemeClass.darkTheme,
-      home: const LoginPage(),
+      home: const WelcomePage(),
 
       //add  flutter_localizations: on pubspec.yml
       localizationsDelegates:const [

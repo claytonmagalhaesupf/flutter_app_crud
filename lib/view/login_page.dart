@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meuapp/view/home_page.dart';
+import 'package:meuapp/view/courses_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -96,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute( 
-                          builder: (context) => HomePage(),
+                          builder: (context) => const CoursesPage(),
                         ),
                       );
                     }

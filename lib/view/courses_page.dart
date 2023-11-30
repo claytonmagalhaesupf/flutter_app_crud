@@ -5,14 +5,14 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:meuapp/view/drawer.dart';
 import 'package:meuapp/view/form_new_course_page.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({super.key});
+class CoursesPage extends StatefulWidget {
+  const CoursesPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<CoursesPage> createState() => _CoursesPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _CoursesPageState extends State<CoursesPage> {
   late Future<List<CourseEntity>> coursesFuture;
   CourseController controller = CourseController();
 
